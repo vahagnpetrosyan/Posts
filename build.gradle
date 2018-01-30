@@ -6,7 +6,6 @@ apply plugin: 'war'
 
 
 sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -14,9 +13,16 @@ repositories {
 
 dependencies {
     compile "org.springframework:spring-webmvc:$springVersion"
+    compile "org.springframework:spring-core:$springVersion"
     compile "org.springframework:spring-jdbc:$springVersion"
-    compile "com.h2database:h2:$h2Version"
+    compile "org.springframework:spring-web:$springVersion"
+    compile "org.springframework:spring-orm:$springVersion"
+    compile "org.springframework:spring-tx:$springVersion"
+
+    compile "org.hibernate:hibernate-core:$hibernateVersion"
     compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
+    compile "mysql:mysql-connector-java:$mysqlJdbcConnectorVersion"
+
     compile "org.apache.commons:commons-lang3:$commonsLangVersion"
 
     compile "javax.servlet:jstl:$jstlVersion"
