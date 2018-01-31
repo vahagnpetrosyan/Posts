@@ -1,0 +1,15 @@
+body {
+    font-family: sans-serif;
+}
+label.error {
+    color: red;
+}
+
+input.error {
+    background-color: #ffcccc;
+}
+
+div.error {
+    background-color: #ffcccc;
+    border: 2px solid red;
+}
