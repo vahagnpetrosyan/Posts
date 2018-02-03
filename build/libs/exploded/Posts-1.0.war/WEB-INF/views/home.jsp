@@ -19,8 +19,8 @@
 <body>
     <h1><spring:message code="posts.welcome"/></h1>
 
-    <spring:url value="posts" var="postURL"/>
-    <spring:url value="register" var="resgisterURL"/>
+    <spring:url value="/post/posts" var="postURL"/>
+    <spring:url value="/user/register" var="resgisterURL"/>
 
     <a href="${postURL}">Posts</a>
     <a href="${resgisterURL}">Register</a>
