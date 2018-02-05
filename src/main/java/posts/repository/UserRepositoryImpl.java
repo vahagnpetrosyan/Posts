@@ -30,6 +30,7 @@ public class UserRepositoryImpl implements UserRepository {
         query.setParameter("username", username);
 
         UserEntity userEntity = (UserEntity) query.getSingleResult();
+        sessionUtil.closeTransaction();
         return userEntity;
     }
 }
