@@ -1,5 +1,6 @@
 package posts.repository;
 
+import org.hibernate.Criteria;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,19 +33,10 @@ public class PostRepositoryImpl implements PostRepository{
     public List<PostEntity> findPosts(long max, int count) {
         sessionUtil.openTransaction();
 
-        String queryStr = "select * from POST"
-                        + "where id < :max"
-                        + "order by desc limit :count";
+        String queryStr = "select * from POST";
 
-        Query query = sessionUtil.getSession().createNativeQuery(queryStr)
-                                                .addEntity(PostEntity.class);
-
-        query.setParameter("max", max);
-        query.setParameter("count", count);
-
-        List<PostEntity> postEntities = (List<PostEntity>) query.list();
-
-        sessionUtil.closeTransaction();
+        List<PostEntity> postEntities = sessionUtil.getSession()
+                .createNativeQuery(queryStr).addEntity(PostEntity.class).list();
         return postEntities;
     }
 
@@ -53,7 +45,7 @@ public class PostRepositoryImpl implements PostRepository{
         sessionUtil.openTransaction();
 
         String queryStr = "select * from POST"
-                        + "where id = :id";
+                        + " where id = :id";
 
         Query query = sessionUtil.getSession().createNativeQuery(queryStr)
                                                 .addEntity(PostEntity.class);

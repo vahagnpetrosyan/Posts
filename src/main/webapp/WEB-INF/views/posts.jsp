@@ -19,7 +19,8 @@
 <body>
     <div class="postForm">
         <form method="POST" name = "postForm">
-            <input type="<textarea name=message" cols="80" rows="10"></textarea>"
+            <textarea name=message cols="50" rows="10"></textarea> <br />
+            <input type="submit" value="Add"/>
         </form>
     </div>
     <div class="listPosts">
@@ -27,7 +28,9 @@
         <ul class="postsList">
             <c:forEach items="${postList}" var="post">
                 <li id="post_<c:out value="${post.id}"/>">
-                    <div class="posMessage" <c:out value="${post.message}"/>></div>
+                    <div class="posMessage">
+                        <c:out value="${post.message}"/>
+                    </div>
                     <div class="postTime">
                         <c:out value="${post.time}"/>
                     </div>

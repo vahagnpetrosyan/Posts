@@ -1,6 +1,35 @@
 body {
     font-family: sans-serif;
 }
+.postsList h1 {
+    font-size: 16pt;
+}
+.postsList ul {
+    list-style: none;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.postsList ul li:first-child {
+    border-top: 0px;
+}
+
+.postsList ul li {
+    border-top: 1px solid #cccccc;
+}
+
+.postTime {
+    font-size: 8pt;
+}
+
+.postLocation {
+    font-size: 8pt;
+}
+
+.postForm h1 {
+    font-size: 16pt;
+}
+
 label.error {
     color: red;
 }

@@ -8,7 +8,7 @@ public interface PostRepository {
 
     List<PostEntity> findRecentPosts();
 
-    List<PostEntity> findPosts(long max, int count);
+    List findPosts(long max, int count);
 
     PostEntity findOne(long id);
 
