@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import posts.entities.PostEntity;
 import posts.utils.SessionUtil;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository
@@ -33,11 +37,18 @@ public class PostRepositoryImpl implements PostRepository{
     public List<PostEntity> findPosts(long max, int count) {
         sessionUtil.openTransaction();
 
-        String queryStr = "select * from POST";
+        CriteriaBuilder criteriaBuilder = sessionUtil.getSession().getCriteriaBuilder();
+        CriteriaQuery<PostEntity> criteria = criteriaBuilder.createQuery(PostEntity.class);
+        Root<PostEntity> root = criteria.from(PostEntity.class);
 
-        List<PostEntity> postEntities = sessionUtil.getSession()
-                .createNativeQuery(queryStr).addEntity(PostEntity.class).list();
-        return postEntities;
+        criteria.select(root).where(criteriaBuilder.lessThan(root.get("id"), max))
+                .orderBy(criteriaBuilder.asc(root.get("time")));
+
+        Query<PostEntity> query = sessionUtil.getSession().createQuery(criteria);
+        List<PostEntity> entities = query.setMaxResults(count).getResultList();
+
+        sessionUtil.closeTransaction();
+        return  entities;
     }
 
     @Override
