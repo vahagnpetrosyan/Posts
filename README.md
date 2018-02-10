@@ -3,6 +3,8 @@
 ## Getting started  
 This is a simple web application for posts creation and  viewing that posts with user registration and user profile page.  
 
+----------
+
 ### Running process
 The application is packaged in war file and deployed to standalone Tomcat.  
 
@@ -15,6 +17,8 @@ The application is packaged in war file and deployed to standalone Tomcat.
 * [MySql](https://www.mysql.com/)
 * [JSP]()
 * [Apache Tomcat](http://tomcat.apache.org/)  
+
+----------
 
 ### Authors
 
