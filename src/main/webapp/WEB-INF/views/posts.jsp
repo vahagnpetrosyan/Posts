@@ -40,7 +40,7 @@
     </div>
     <c:if test="${fn:length(postList) gt 20}">
         <hr />
-        <spring:url value="/spittles?count=${fn:length(postList) + 20}" var="more_url" />
+        <spring:url value="/post/posts?count=${fn:length(postList) + 20}" var="more_url" />
         <a href="${more_url}">Show more</a>
     </c:if>
 
